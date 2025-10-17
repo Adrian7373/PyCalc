@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QMainWindow, QPushButton, QVBoxLayout, QWidget, QHBoxLayout, QLineEdit
+from PySide6.QtWidgets import QMainWindow, QPushButton, QVBoxLayout, QWidget, QHBoxLayout, QLineEdit, QSizePolicy
 from simpleeval import simple_eval
 
 
@@ -8,7 +8,7 @@ class MainWindow(QMainWindow):
 
         # Setting window title and size
         self.setWindowTitle("Calculator")
-        self.setGeometry(100, 100, 300, 400)
+        self.setGeometry(300, 500, 300, 500)
 
         # Instantiation of the Main Widget
         self.central_widget = MainWidget()
@@ -40,7 +40,18 @@ class HorizontalLayoutsHolder(QWidget):
 
         # Defining line_edit object + adding it to the layout
         self.line_edit = QLineEdit()
-        self.layout.addWidget(self.line_edit)
+        self.line_edit.setSizePolicy(
+            QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.line_edit.setStyleSheet("""
+            QLineEdit {
+                        font-family:'Arial';
+                        font-size: 30px;
+                        font-weight: bold;
+                        width:300px;
+                        height:50px
+                                     }
+         """)
+        self.layout.addWidget(self.line_edit, 3)
 
         # Instantiating the layer objects + passing a reference to the line_edit inside this class
         layer_zero = LayerZero(self.line_edit)
@@ -50,11 +61,11 @@ class HorizontalLayoutsHolder(QWidget):
         layer_four = LayerFour(self.line_edit)
 
         # Adding the elements(Layers of Buttons) to the layout
-        self.layout.addWidget(layer_zero)
-        self.layout.addWidget(layer_one)
-        self.layout.addWidget(layer_two)
-        self.layout.addWidget(layer_three)
-        self.layout.addWidget(layer_four)
+        self.layout.addWidget(layer_zero, 5)
+        self.layout.addWidget(layer_one, 5)
+        self.layout.addWidget(layer_two, 5)
+        self.layout.addWidget(layer_three, 5)
+        self.layout.addWidget(layer_four, 5)
 
 
 class LayerZero(QWidget):
@@ -256,9 +267,9 @@ class LayerFour(QWidget):
         self.equals_button = QPushButton("=")
 
         # Adding the elements(buttons) to the layout
-        self.layout.addWidget(self.zero_button)
-        self.layout.addWidget(self.point_button)
-        self.layout.addWidget(self.equals_button)
+        self.layout.addWidget(self.zero_button, 1)
+        self.layout.addWidget(self.point_button, 1)
+        self.layout.addWidget(self.equals_button, 2)
 
         # Assigning button signals to the slots
         self.zero_button.clicked.connect(self.zero_clicked)
