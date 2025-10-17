@@ -104,5 +104,6 @@ Each button connects to its own slot function that updates the shared `QLineEdit
 
 ## 📸 Screenshot 
 
-<img width="390" height="433" alt="Screenshot 2025-10-17 140744" src="https://github.com/user-attachments/assets/50db19a3-5c64-4dc4-a2a9-79d1a0e23eae" />
+<img width="389" height="531" alt="Screenshot 2025-10-17 191409" src="https://github.com/user-attachments/assets/976dbd62-1431-457b-ac12-97e1161f0b2d" />
+
 
